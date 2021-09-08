@@ -8,6 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
+using Sparcpoint.Application.Commands;
+using Sparcpoint.Domain.Aggregates.ProductAggregate;
+using Sparcpoint.Infrastructure.Repositories;
 
 namespace Interview.Web
 {
@@ -24,6 +28,8 @@ namespace Interview.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IProductRepository, ProductRepositories>();
+            services.AddMediatR(typeof(AddProductCommand));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
